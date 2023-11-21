@@ -1,6 +1,7 @@
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -18,6 +19,17 @@ public class Author {
     private LocalDate birthday;
     @Column(name = "author_country")
     private String country;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    private List<Book> bookList;
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
 
     public Author() {
     }
@@ -52,5 +64,16 @@ public class Author {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", country='" + country + '\'' +
+                ", bookList=" + bookList +
+                '}';
     }
 }

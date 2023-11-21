@@ -1,5 +1,7 @@
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table (name = "publishers")
 public class Publisher {
@@ -11,8 +13,14 @@ public class Publisher {
    private String name;
    @Column (name= "establish_year")
    private  int establishmentYear;
-   @ Column (name= "address")
+
+
+
+    @ Column (name= "address")
    private String address;
+
+   @OneToMany (mappedBy = "publisher")
+   private List<Book> bookList;
 
     public Publisher() {
     }
@@ -45,7 +53,25 @@ public class Publisher {
         return address;
     }
 
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", establishmentYear=" + establishmentYear +
+                ", address='" + address + '\'' +
+                ", bookList=" + bookList +
+                '}';
     }
 }
