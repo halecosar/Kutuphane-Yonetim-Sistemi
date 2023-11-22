@@ -6,4 +6,4 @@ Hibernate Framework kullanılmıştır.
 
 Maven ve PostgreSQL dependency’leri tanımlanmıştır.
 
-Tabloların ekran görüntüsünü inceleyebilirsiniz.
+Tabloların ekran görüntüsünü png dosyalarında inceleyebilirsiniz.
